@@ -7,10 +7,15 @@ terraform {
   required_version = ">=1.5"
 }
 
+resource "yandex_vpc_network" "db" {
+ name = "db-network"
+
+}
+
 provider "yandex" {
-  # token     = var.token
-  cloud_id                 = var.cloud_id
-  folder_id                = var.folder_id
-  zone                     = var.default_zone
-  service_account_key_file = file("~/.authorized_key.json")
+  #token                   = var.yc_token
+  cloud_id                 = var.yc_cloud_id
+  folder_id                = var.yc_folder_id
+  zone                     = var.yc_region
+  service_account_key_file = file("../authorized_key.json")
 }
